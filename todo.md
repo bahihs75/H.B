@@ -8,3 +8,12 @@
 - [x] Provide owner controls for orders, delivery mode, wilaya/baladiya details, COD status, products, content, and store settings.
 - [x] Add automated tests for dependent wilaya/baladiya logic and COD order validation.
 - [x] Validate desktop and mobile checkout/admin workflows and save the H.B-only checkpoint.
+
+## Complete Reference-Feature Synthesis
+
+- [x] Catalogue every customer, order, delivery, content, product, settings, analytics, and operational capability in the read-only Space Wear, Afak Carpet, and Tiddis Tapis references.
+- [x] Produce a feature-by-feature implementation map that preserves KDB’s COD-only, 58-wilaya, dependent-baladiya, and owner-first rules.
+- [x] Extend the bespoke H.B KDB control room with all applicable order operations, delivery operations, catalogue controls, storefront content controls, customer data, activity, and settings capabilities.
+- [x] Extend the H.B storefront with all applicable customer-facing commerce, discovery, and service capabilities without copying reference code or design.
+- [x] Add complete automated coverage for each new protected admin operation and customer workflow.
+- [x] Verify desktop and mobile interfaces, save a new H.B-only checkpoint, and document the delivered capability matrix.

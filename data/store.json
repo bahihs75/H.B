@@ -1,44 +1,304 @@
 {
   "settings": {
+    "announcement": "COD orders · Delivery across all 58 wilayas.",
+    "storeOpen": true,
+    "identity": {
+      "storeName": "KDB",
+      "tagline": "Objects for the rooms you return to.",
+      "logoUrl": "",
+      "primaryColor": "#123d45",
+      "accentColor": "#ffebaf",
+      "contactPhone": "0550 000 000",
+      "whatsappUrl": "",
+      "email": "studio@kdb.example",
+      "address": "Algeria",
+      "socialLinks": {
+        "instagram": "",
+        "facebook": "",
+        "tiktok": ""
+      },
+      "privacyUrl": "/privacy",
+      "termsUrl": "/terms"
+    },
+    "presentation": {
+      "heroVisible": true,
+      "heroAutoplay": true,
+      "heroInterval": 6000,
+      "heroDots": true,
+      "heroArrows": true,
+      "heroPauseOnInteraction": true,
+      "heroHeight": "editorial",
+      "mobileFloatingNav": true,
+      "floatingNavItems": [
+        "shop",
+        "collections",
+        "projects",
+        "contact"
+      ]
+    },
+    "catalog": {
+      "showAvailability": true,
+      "showStockCount": false,
+      "allowWaitlist": false,
+      "searchEnabled": true,
+      "lifestyleViews": true,
+      "mobileColorRail": true,
+      "shareableFilters": true,
+      "filters": [
+        {
+          "id": "category",
+          "label": "Category",
+          "type": "select",
+          "options": []
+        },
+        {
+          "id": "colour",
+          "label": "Colour",
+          "type": "select",
+          "options": []
+        },
+        {
+          "id": "material",
+          "label": "Material",
+          "type": "select",
+          "options": []
+        },
+        {
+          "id": "availability",
+          "label": "Availability",
+          "type": "toggle",
+          "options": [
+            "In stock"
+          ]
+        }
+      ]
+    },
+    "delivery": {
+      "fulfilmentMessage": "Choose Stop Desk or domicile delivery. KDB confirms every COD request by phone.",
+      "handlingDays": "3–5 working days",
+      "freeDeliveryThreshold": 0
+    },
+    "marketing": {
+      "consentTitle": "Your privacy matters",
+      "consentText": "KDB uses essential storage to operate the storefront. Optional marketing tools are not activated by this setting.",
+      "metaPixelId": "",
+      "tiktokPixelId": ""
+    },
+    "seo": {
+      "title": "KDB — Objects for the everyday",
+      "description": "KDB material studies with COD delivery across Algeria."
+    },
     "heroTitle": "Objects that make a room hold still.",
     "heroBody": "KDB brings material studies, useful forms, and quietly vivid rooms into one considered edit.",
-    "announcement": "COD orders · Delivery across all 58 wilayas.",
-    "supportPhone": "0550 000 000",
-    "storeOpen": true
+    "supportPhone": "0550 000 000"
   },
   "products": [
     {
       "id": "fringe",
       "name": "Hand-Finished Fringe",
-      "category": "Textile",
+      "nameAr": "Hand-Finished Fringe",
+      "categoryId": "textile",
+      "navigationCategory": "textile",
+      "collectionIds": [
+        "quiet-rooms"
+      ],
+      "sku": "KDB-FRINGE-01",
+      "material": "Material study",
+      "description": "A warm woven study with a carefully finished edge.",
+      "descriptionAr": "دراسة هادئة في الملمس واللون ومساحة الغرفة.",
       "price": 12500,
       "stock": 7,
       "status": "published",
       "featured": true,
+      "position": 0,
       "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
-      "description": "A warm woven study with a carefully finished edge."
+      "hoverImage": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "gallery": [
+        "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300"
+      ],
+      "colors": [
+        {
+          "name": "Natural",
+          "hex": "#d4b28a"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "construction",
+          "label": "Construction",
+          "value": "Material study"
+        }
+      ],
+      "variants": [
+        {
+          "id": "fringe-standard",
+          "name": "Standard",
+          "sku": "KDB-FRINGE-01",
+          "price": 12500,
+          "stock": 7,
+          "available": true
+        }
+      ],
+      "sizes": [
+        "Standard"
+      ],
+      "customSizeEnabled": false,
+      "lifestyleEnabled": true,
+      "visible": true,
+      "discoveryEnabled": true,
+      "giftEligible": false,
+      "tags": [
+        "KDB",
+        "textile"
+      ],
+      "publishAt": null,
+      "unpublishAt": null,
+      "offer": {
+        "enabled": false,
+        "label": "",
+        "endsAt": null
+      },
+      "createdAt": "2026-08-22T11:09:35.509Z",
+      "updatedAt": "2026-08-22T11:09:35.509Z",
+      "category": "Textile"
     },
     {
       "id": "rolls",
       "name": "Rolled Colour Study",
-      "category": "Textile",
+      "nameAr": "Rolled Colour Study",
+      "categoryId": "textile",
+      "navigationCategory": "textile",
+      "collectionIds": [
+        "colour-underfoot"
+      ],
+      "sku": "KDB-ROLLS-01",
+      "material": "Material study",
+      "description": "Saturated fibre and quiet geometry for the everyday room.",
+      "descriptionAr": "دراسة هادئة في الملمس واللون ومساحة الغرفة.",
       "price": 8900,
       "stock": 11,
       "status": "published",
       "featured": true,
+      "position": 1,
       "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
-      "description": "Saturated fibre and quiet geometry for the everyday room."
+      "hoverImage": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "gallery": [
+        "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300"
+      ],
+      "colors": [
+        {
+          "name": "Natural",
+          "hex": "#d4b28a"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "construction",
+          "label": "Construction",
+          "value": "Material study"
+        }
+      ],
+      "variants": [
+        {
+          "id": "rolls-standard",
+          "name": "Standard",
+          "sku": "KDB-ROLLS-01",
+          "price": 8900,
+          "stock": 11,
+          "available": true
+        }
+      ],
+      "sizes": [
+        "Standard"
+      ],
+      "customSizeEnabled": false,
+      "lifestyleEnabled": true,
+      "visible": true,
+      "discoveryEnabled": true,
+      "giftEligible": false,
+      "tags": [
+        "KDB",
+        "textile"
+      ],
+      "publishAt": null,
+      "unpublishAt": null,
+      "offer": {
+        "enabled": false,
+        "label": "",
+        "endsAt": null
+      },
+      "createdAt": "2026-08-22T11:09:35.509Z",
+      "updatedAt": "2026-08-22T11:09:35.509Z",
+      "category": "Textile"
     },
     {
       "id": "terrain",
       "name": "Soft Terrain",
-      "category": "Rug",
+      "nameAr": "Soft Terrain",
+      "categoryId": "rug",
+      "navigationCategory": "rug",
+      "collectionIds": [
+        "quiet-rooms"
+      ],
+      "sku": "KDB-TERRAIN-01",
+      "material": "Material study",
+      "description": "Tactile pile with a soft natural finish.",
+      "descriptionAr": "دراسة هادئة في الملمس واللون ومساحة الغرفة.",
       "price": 15600,
       "stock": 4,
       "status": "published",
       "featured": true,
+      "position": 2,
       "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
-      "description": "Tactile pile with a soft natural finish."
+      "hoverImage": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "gallery": [
+        "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300"
+      ],
+      "colors": [
+        {
+          "name": "Natural",
+          "hex": "#d4b28a"
+        }
+      ],
+      "attributes": [
+        {
+          "id": "construction",
+          "label": "Construction",
+          "value": "Material study"
+        }
+      ],
+      "variants": [
+        {
+          "id": "terrain-standard",
+          "name": "Standard",
+          "sku": "KDB-TERRAIN-01",
+          "price": 15600,
+          "stock": 4,
+          "available": true
+        }
+      ],
+      "sizes": [
+        "Standard"
+      ],
+      "customSizeEnabled": false,
+      "lifestyleEnabled": true,
+      "visible": true,
+      "discoveryEnabled": true,
+      "giftEligible": false,
+      "tags": [
+        "KDB",
+        "rug"
+      ],
+      "publishAt": null,
+      "unpublishAt": null,
+      "offer": {
+        "enabled": false,
+        "label": "",
+        "endsAt": null
+      },
+      "createdAt": "2026-08-22T11:09:35.509Z",
+      "updatedAt": "2026-08-22T11:09:35.509Z",
+      "category": "Rug"
     }
   ],
   "orders": [],
@@ -48,407 +308,636 @@
       "name": "أدرار",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "02",
       "name": "الشلف",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "03",
       "name": "الأغواط",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "04",
       "name": "أم البواقي",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "05",
       "name": "باتنة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "06",
       "name": "بجاية",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "07",
       "name": "بسكرة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "08",
       "name": "بشار",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "09",
       "name": "البليدة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "10",
       "name": "البويرة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "11",
       "name": "تمنراست",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "12",
       "name": "تبسة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "13",
       "name": "تلمسان",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "14",
       "name": "تيارت",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "15",
       "name": "تيزي وزو",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "16",
       "name": "الجزائر",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "17",
       "name": "الجلفة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "18",
       "name": "جيجل",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "19",
       "name": "سطيف",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "20",
       "name": "السعيدة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "21",
       "name": "سكيكدة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "22",
       "name": "سيدي بلعباس",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "23",
       "name": "عنابة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "24",
       "name": "قالمة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "25",
       "name": "قسنطينة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "26",
       "name": "المدية",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "27",
       "name": "مستغانم",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "28",
       "name": "المسيلة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "29",
       "name": "معسكر",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "30",
       "name": "ورقلة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "31",
       "name": "وهران",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "32",
       "name": "البيض",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "33",
       "name": "إليزي",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "34",
       "name": "برج بوعريريج",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "35",
       "name": "بومرداس",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "36",
       "name": "الطارف",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "37",
       "name": "تندوف",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "38",
       "name": "تسيمسيلت",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "39",
       "name": "الوادي(واد سوف)",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "40",
       "name": "خنشلة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "41",
       "name": "سوق اهراس",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "42",
       "name": "تيبازة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "43",
       "name": "ميلة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "44",
       "name": "عين الدفلى",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "45",
       "name": "النعامة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "46",
       "name": "عين تموشنت",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "47",
       "name": "غرداية",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "48",
       "name": "غليزان",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "49",
       "name": "تيميمون",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "50",
       "name": "برج باجي مختار",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "51",
       "name": "أولاد جلال",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "52",
       "name": "بني عباس",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "53",
       "name": "عين صالح",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "54",
       "name": "عين قزام",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "55",
       "name": "تقرت",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "56",
       "name": "جانت",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "57",
       "name": "المغير",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     },
     {
       "code": "58",
       "name": "المنيعة",
       "stopDeskFee": 0,
       "domicileFee": 0,
-      "enabled": true
+      "enabled": true,
+      "free": false
     }
   ],
-  "activity": []
+  "activity": [],
+  "schemaVersion": 2,
+  "content": {
+    "heroSlides": [
+      {
+        "id": "hero-01",
+        "kicker": "THE KDB ROOM / 2026",
+        "kickerAr": "غرفة KDB / 2026",
+        "title": "Objects that make a room hold still.",
+        "titleAr": "أشياء تجعل الغرفة أكثر هدوءاً.",
+        "body": "KDB brings material studies, useful forms, and quietly vivid rooms into one considered edit.",
+        "bodyAr": "يجمع KDB دراسات المواد والأشكال المفيدة والغرف الهادئة في تحرير واحد مدروس.",
+        "action": "Shop the room edit",
+        "actionAr": "اكتشف المجموعة",
+        "href": "#shop",
+        "externalUrl": "",
+        "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+        "mobileImage": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+        "fallbackImage": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+        "textTone": "dark",
+        "iconMarkup": "",
+        "enabled": true,
+        "sortOrder": 0
+      }
+    ],
+    "about": {
+      "title": "Made for the rooms you return to.",
+      "body": "Every KDB study is selected for texture, scale, and the way it lets a room settle into itself.",
+      "titleAr": "مصمم للغرف التي تعود إليها.",
+      "bodyAr": "يختار KDB كل قطعة من أجل الملمس والمقياس والطريقة التي تمنح بها الغرفة هدوءها."
+    },
+    "projects": [],
+    "statistics": [
+      {
+        "id": "stat-01",
+        "label": "Wilayas served",
+        "value": "58",
+        "visible": true
+      },
+      {
+        "id": "stat-02",
+        "label": "Payment method",
+        "value": "COD",
+        "visible": true
+      }
+    ],
+    "certifications": [],
+    "sectionVisibility": {
+      "hero": true,
+      "catalogue": true,
+      "collections": true,
+      "projects": false,
+      "about": true,
+      "contact": true,
+      "statistics": true
+    }
+  },
+  "categories": [
+    {
+      "id": "textile",
+      "name": "Textiles",
+      "nameAr": "منسوجات",
+      "description": "Material studies for daily rooms.",
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "parentId": null,
+      "navigation": true,
+      "visible": true,
+      "colorFilterVisible": true,
+      "position": 0
+    },
+    {
+      "id": "rug",
+      "name": "Rugs",
+      "nameAr": "سجاد",
+      "description": "Soft terrain for grounded interiors.",
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/WgELGDitFvYmVjBB.jpg?v=1787320322",
+      "parentId": null,
+      "navigation": true,
+      "visible": true,
+      "colorFilterVisible": true,
+      "position": 1
+    }
+  ],
+  "collections": [
+    {
+      "id": "quiet-rooms",
+      "name": "Quiet rooms",
+      "nameAr": "غرف هادئة",
+      "description": "A restrained edit of material and scale.",
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "productIds": [
+        "fringe",
+        "terrain"
+      ],
+      "visible": true,
+      "position": 0
+    },
+    {
+      "id": "colour-underfoot",
+      "name": "Colour underfoot",
+      "nameAr": "ألوان تحت القدم",
+      "description": "Saturated fibre and attentive colour.",
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/WgELGDitFvYmVjBB.jpg?v=1787320322",
+      "productIds": [
+        "rolls"
+      ],
+      "visible": true,
+      "position": 1
+    }
+  ],
+  "attributes": [
+    {
+      "id": "construction",
+      "label": "Construction",
+      "type": "select",
+      "values": [
+        "Woven textile",
+        "Loop pile",
+        "Hand-tufted pile"
+      ]
+    },
+    {
+      "id": "material",
+      "label": "Material",
+      "type": "select",
+      "values": [
+        "Wool",
+        "Cotton",
+        "Mixed fibre"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "media-hero-01",
+      "name": "Warm material room",
+      "url": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "provider": "external",
+      "usage": "hero",
+      "section": "homepage",
+      "tags": [
+        "hero",
+        "warm",
+        "room"
+      ],
+      "createdAt": "2026-08-22T11:09:35.509Z"
+    },
+    {
+      "id": "media-product-01",
+      "name": "Rolled colour study",
+      "url": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/WgELGDitFvYmVjBB.jpg?v=1787320322",
+      "provider": "external",
+      "usage": "product",
+      "section": "catalogue",
+      "tags": [
+        "product",
+        "colour",
+        "textile"
+      ],
+      "createdAt": "2026-08-22T11:09:35.509Z"
+    }
+  ],
+  "team": [
+    {
+      "id": "owner",
+      "name": "KDB Owner",
+      "role": "Owner",
+      "phone": "",
+      "active": true,
+      "createdAt": "2026-08-22T11:09:35.509Z"
+    }
+  ]
 }
