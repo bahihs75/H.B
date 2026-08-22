@@ -1,0 +1,454 @@
+{
+  "settings": {
+    "heroTitle": "Objects that make a room hold still.",
+    "heroBody": "KDB brings material studies, useful forms, and quietly vivid rooms into one considered edit.",
+    "announcement": "COD orders · Delivery across all 58 wilayas.",
+    "supportPhone": "0550 000 000",
+    "storeOpen": true
+  },
+  "products": [
+    {
+      "id": "fringe",
+      "name": "Hand-Finished Fringe",
+      "category": "Textile",
+      "price": 12500,
+      "stock": 7,
+      "status": "published",
+      "featured": true,
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "description": "A warm woven study with a carefully finished edge."
+    },
+    {
+      "id": "rolls",
+      "name": "Rolled Colour Study",
+      "category": "Textile",
+      "price": 8900,
+      "stock": 11,
+      "status": "published",
+      "featured": true,
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "description": "Saturated fibre and quiet geometry for the everyday room."
+    },
+    {
+      "id": "terrain",
+      "name": "Soft Terrain",
+      "category": "Rug",
+      "price": 15600,
+      "stock": 4,
+      "status": "published",
+      "featured": true,
+      "image": "https://cdn.shopify.com/s/files/1/0849/6014/9747/files/PcdzkgakKRVYhJXL.jpg?v=1787320300",
+      "description": "Tactile pile with a soft natural finish."
+    }
+  ],
+  "orders": [],
+  "deliveryRules": [
+    {
+      "code": "01",
+      "name": "أدرار",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "02",
+      "name": "الشلف",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "03",
+      "name": "الأغواط",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "04",
+      "name": "أم البواقي",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "05",
+      "name": "باتنة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "06",
+      "name": "بجاية",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "07",
+      "name": "بسكرة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "08",
+      "name": "بشار",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "09",
+      "name": "البليدة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "10",
+      "name": "البويرة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "11",
+      "name": "تمنراست",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "12",
+      "name": "تبسة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "13",
+      "name": "تلمسان",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "14",
+      "name": "تيارت",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "15",
+      "name": "تيزي وزو",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "16",
+      "name": "الجزائر",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "17",
+      "name": "الجلفة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "18",
+      "name": "جيجل",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "19",
+      "name": "سطيف",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "20",
+      "name": "السعيدة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "21",
+      "name": "سكيكدة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "22",
+      "name": "سيدي بلعباس",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "23",
+      "name": "عنابة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "24",
+      "name": "قالمة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "25",
+      "name": "قسنطينة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "26",
+      "name": "المدية",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "27",
+      "name": "مستغانم",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "28",
+      "name": "المسيلة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "29",
+      "name": "معسكر",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "30",
+      "name": "ورقلة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "31",
+      "name": "وهران",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "32",
+      "name": "البيض",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "33",
+      "name": "إليزي",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "34",
+      "name": "برج بوعريريج",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "35",
+      "name": "بومرداس",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "36",
+      "name": "الطارف",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "37",
+      "name": "تندوف",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "38",
+      "name": "تسيمسيلت",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "39",
+      "name": "الوادي(واد سوف)",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "40",
+      "name": "خنشلة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "41",
+      "name": "سوق اهراس",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "42",
+      "name": "تيبازة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "43",
+      "name": "ميلة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "44",
+      "name": "عين الدفلى",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "45",
+      "name": "النعامة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "46",
+      "name": "عين تموشنت",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "47",
+      "name": "غرداية",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "48",
+      "name": "غليزان",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "49",
+      "name": "تيميمون",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "50",
+      "name": "برج باجي مختار",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "51",
+      "name": "أولاد جلال",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "52",
+      "name": "بني عباس",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "53",
+      "name": "عين صالح",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "54",
+      "name": "عين قزام",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "55",
+      "name": "تقرت",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "56",
+      "name": "جانت",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "57",
+      "name": "المغير",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    },
+    {
+      "code": "58",
+      "name": "المنيعة",
+      "stopDeskFee": 0,
+      "domicileFee": 0,
+      "enabled": true
+    }
+  ],
+  "activity": []
+}
