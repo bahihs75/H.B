@@ -29,3 +29,7 @@ Selecting **Wilaya 16 — الجزائر** and then **Domicile delivery** reveal
 ## Responsive check
 
 A 375 × 812 public-page capture confirmed the compact mobile header, COD notice, readable editorial hero, full primary call-to-action, and proportional material image without horizontal clipping in the initial viewport. The owner room was also checked in the interactive desktop browser; its responsive CSS changes the sidebar into a compact horizontal control rail at narrow widths.
+
+## Public owner-access privacy
+
+The public header, customer navigation, and footer were rechecked after the privacy update. They expose only KDB store, collection, project, contact, language, and bag controls; the public **Owner access** link is absent. The direct `#admin` route remains available only to someone who already knows it and presents the owner-code gate before the control room renders.

@@ -17,3 +17,9 @@
 - [x] Extend the H.B storefront with all applicable customer-facing commerce, discovery, and service capabilities without copying reference code or design.
 - [x] Add complete automated coverage for each new protected admin operation and customer workflow.
 - [x] Verify desktop and mobile interfaces, save a new H.B-only checkpoint, and document the delivered capability matrix.
+
+## Public Owner-Access Privacy
+
+- [x] Remove all customer-facing owner-admin links and public explanatory references while retaining the direct protected route.
+- [x] Verify the storefront no longer reveals the owner console and the direct protected route still requires the configured token.
+- [x] Commit and push the H.B-only owner-access privacy update.
