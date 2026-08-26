@@ -6,9 +6,15 @@
   "scripts": {
     "dev": "node --watch server/index.mjs",
     "start": "node server/index.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "check:worker": "node --check worker/firestore.mjs && node --check worker/firestore-store.mjs && node --check worker/store.mjs && node --check worker/index.mjs",
+    "dev:cloudflare": "wrangler dev",
+    "deploy:cloudflare": "wrangler deploy"
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.125.0"
   }
 }

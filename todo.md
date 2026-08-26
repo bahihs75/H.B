@@ -23,3 +23,11 @@
 - [x] Remove all customer-facing owner-admin links and public explanatory references while retaining the direct protected route.
 - [x] Verify the storefront no longer reveals the owner console and the direct protected route still requires the configured token.
 - [x] Commit and push the H.B-only owner-access privacy update.
+
+## Production Firestore and Cloudflare Target
+
+- [x] Isolate a Firestore REST adapter and Firestore collection contract for KDB production without Shopify.
+- [x] Add a Cloudflare Worker API target that preserves public catalogue, protected owner operations, and server-validated COD paths.
+- [x] Add Firestore deny-by-default browser rules, Worker secret templates, deployment configuration, production documentation, and unit coverage for the repository codec.
+- [x] Run direct Node syntax and regression tests for the Worker source and existing KDB domain suite.
+- [ ] Create the owner Firebase project, deploy Firestore rules, set Cloudflare Worker secrets, import owner-approved production records, and run a live Firestore/Cloudflare smoke test.
