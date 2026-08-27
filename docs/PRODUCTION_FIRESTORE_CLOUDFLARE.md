@@ -1,83 +1,77 @@
-# KDB Production Target: Firestore + Cloudflare
+# KDB Production: Cloudflare Pages + Firebase
 
 ## Decision
 
-The **H.B repository** is the KDB production target. It does not use Shopify. Cloudflare Workers serves the KDB application and its API, while Cloud Firestore stores the catalogue, owner-controlled content, delivery matrix, COD orders, and operational records. The temporary KDB preview can remain separate during migration.
+KDB production is a **Cloudflare Pages** site whose static files are in `public/`. It does not use Shopify, Cloudflare Workers, or Pages Functions. **Firebase** provides Cloud Firestore for data, Firebase Authentication for the owner, and Firebase Cloud Functions for server-validated COD orders and protected owner operations.
 
-> KDB remains **cash on delivery only**. Firestore and Cloudflare do not activate cards, gateways, or online payment methods.
+> COD remains the only payment method. The `createCodOrder` function recalculates product price, stock, wilaya delivery fee, and total from Firestore; the browser cart is never treated as the final commercial record.
 
-## Runtime boundary
-
-| Concern | Production responsibility |
+| Layer | Responsibility |
 |---|---|
-| Public storefront and static assets | Cloudflare Worker Assets from `public/` |
-| Public and owner API | `worker/index.mjs` |
-| Operational data | Cloud Firestore through the Worker only |
-| Browser database access | Denied by `firestore.rules` |
-| Owner access | Server-side `KDB_ADMIN_TOKEN` secret; never exposed to public JavaScript |
-| Product images | Approved HTTPS URLs or a separately approved asset workflow; no example Shopify asset is required for production |
+| Cloudflare Pages | Serves the KDB static website from `public/` |
+| `public/firebase-config.js` | Holds Firebase web-app identifiers only; never a private key |
+| Firebase Authentication | Signs in the KDB owner by email/password |
+| Cloud Firestore | Stores KDB products, content, 58-wilaya delivery rules, COD orders, media, and audit activity |
+| Firebase Cloud Functions | Returns public catalogue data; validates COD and owner mutations |
+| Firestore rules | Deny direct browser access; all KDB data uses callable Functions |
 
-Firestore supports web/server architectures with security rules, while Firestore REST calls authenticated with a service account use IAM rather than browser rules.[1] The Worker therefore holds the service-account secrets and is the only application component allowed to access the database. Firestore rules deliberately deny direct browser access as a second boundary.[2]
+Cloudflare Pages can deploy a static folder through a connected Git repository with `exit 0` as the build command and `public` as the output directory.[1] Firebase callable Functions are server-side endpoints and Firebase Auth identity can be used to protect them.[2] [3]
 
-## Firestore collections
+## Firestore records
 
-| Firestore path | Data | Query requirement |
-|---|---|---|
-| `kdb_settings/current` | Store identity, opening state, presentation, COD delivery configuration | Single document read |
-| `kdb_content/current` | Hero, about, projects, section visibility | Single document read |
-| `kdb_products/{productId}` | Product, variants, images, publishing state | Public published listing; product-by-id read |
-| `kdb_categories/{categoryId}` | Category navigation and visibility | Public visible listing |
-| `kdb_collections/{collectionId}` | Owner-curated product groups | Public visible listing |
-| `kdb_delivery_rules/{wilayaCode}` | 58-wilaya service state and Stop Desk/domicile fees | Owner-only; order-time server read |
-| `kdb_orders/{orderId}` | Server-calculated COD order, lines, status, notes | Owner-only listing and update |
-| `kdb_media/{mediaId}` | Approved media metadata | Owner-only management |
-| `kdb_activity/{activityId}` | Owner audit trail | Owner-only listing |
+| Path | Content |
+|---|---|
+| `kdb_config/current` | Store settings and public content |
+| `kdb_products/{id}` | Product details, gallery, variants, stock, publication state |
+| `kdb_categories/{id}` and `kdb_collections/{id}` | Catalogue discovery content |
+| `kdb_delivery_rules/{wilaya}` | 58 wilayas and Stop Desk/domicile rules |
+| `kdb_orders/{id}` | COD order snapshot calculated by the Function |
+| `kdb_media/{id}`, `kdb_activity/{id}`, `kdb_team/{id}` | Approved media metadata, audit data, owner team data |
 
-The production import must contain **owner-approved content only**. No placeholder products, contact channels, delivery dates, policy statements, ratings, reviews, or sales figures may be imported from test data.
+## Files in this repository
 
-## Required secrets
+| File | Purpose |
+|---|---|
+| `public/firebase-config.js` | Empty public configuration template; replace only with Firebase Web App values |
+| `public/firebase-client.js` | Client calls for public store, COD, owner sign-in and owner API |
+| `functions/index.mjs` | Callable Firebase Functions for KDB |
+| `functions/set-owner-claim.mjs` | One-time owner claim utility for an already-created Firebase Auth owner |
+| `functions/package.json` | Firebase Function runtime dependencies |
+| `firestore.rules` | Deny-by-default browser rules |
+| `firebase.json` | Firebase Functions and Rules deployment configuration |
 
-| Secret | Where to set it | Purpose |
-|---|---|---|
-| `KDB_ADMIN_TOKEN` | Cloudflare Worker secret | Protect owner API operations |
-| `FIREBASE_PROJECT_ID` | Cloudflare Worker secret | Select the Firestore project |
-| `FIREBASE_SERVICE_ACCOUNT_EMAIL` | Cloudflare Worker secret | Identify the least-privilege server principal |
-| `FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY` | Cloudflare Worker secret | Obtain the short-lived OAuth access token for Firestore REST |
+## Required owner setup
 
-Do not put any of these in `wrangler.jsonc`, browser code, committed `.env` files, screenshots, or product records. Firestore REST accepts a Google OAuth 2.0 token for service-account requests and requires the datastore scope.[1]
+1. Create a Firebase project and Firestore database in **production mode**. Test mode must not be used for an operating store because it starts with broad client access.[4]
+2. Enable **Email/Password** in Firebase Authentication and create the owner account. Customers do not need an account.
+3. Copy Firebase Console → Project Settings → Web App configuration into `public/firebase-config.js`.
+4. Run `firebase use YOUR_FIREBASE_PROJECT_ID`, install dependencies in `functions/`, then run `firebase deploy --only firestore,functions`. Cloud Functions production deployment has Firebase billing requirements; check Firebase’s current policy before deploying.[2]
+5. Give the owner user the `owner: true` claim using `functions/set-owner-claim.mjs`, then sign out and sign in again.
+6. Add only owner-approved KDB products, images, delivery rules, contact details, and policies. Do not import Shopify records, test records, customer reviews, ratings, or unapproved claims.
+7. In Cloudflare, create a **Pages** project from `bahihs75/H.B`, select branch `main`, set Build command to `exit 0`, and Build output directory to `public`.[1] The `public/_headers` and `public/_redirects` files are deployed with the site.
+8. Use the Pages preview deployment created from a pull request or branch to test Product → Bag → COD and owner sign-in before attaching a custom domain. The Pages CLI’s static deploy command does not provide a separate dry-run mode, so a preview deployment is the verification target.
 
-## Cloudflare setup
-
-Cloudflare’s React/Vite guidance supports a Worker API with static SPA assets and single-page route fallback.[3] This repository therefore uses `wrangler.jsonc` with `worker/index.mjs` as the API entry and `public/` as static assets.
-
-After creating the Firebase project and Firestore database in production mode, deploy rules first, then set Worker secrets and deploy the Worker:
+## Commands
 
 ```bash
-firebase init firestore
-firebase deploy --only firestore
+# Project regression tests and Functions source validation
+pnpm test
+pnpm check:functions
 
-pnpm add -D wrangler
-pnpm wrangler secret put KDB_ADMIN_TOKEN
-pnpm wrangler secret put FIREBASE_PROJECT_ID
-pnpm wrangler secret put FIREBASE_SERVICE_ACCOUNT_EMAIL
-pnpm wrangler secret put FIREBASE_SERVICE_ACCOUNT_PRIVATE_KEY
-pnpm wrangler deploy
+# Firebase, after installing Firebase CLI and authenticating
+firebase use YOUR_FIREBASE_PROJECT_ID
+firebase deploy --only firestore,functions
+
+# Cloudflare Pages direct deployment, after Cloudflare authentication
+pnpm deploy:pages
 ```
-
-Do not use Firestore test mode in production: it permits broad browser access until rules are replaced.[2]
-
-## Import and launch gate
-
-1. Create the Firebase project, choose the Firestore location deliberately, create the database in production mode, and deploy `firestore.rules`.[2]
-2. Set the four Worker secrets through Cloudflare; the local equivalent is `.dev.vars`, created from `.dev.vars.example`.
-3. Import only completed owner-approved KDB records. Keep the storefront closed until a real catalogue, prices, stock decisions, images, delivery fees, and contact/policy details have been approved.
-4. Run the KDB API, COD, owner-access, and mobile test matrix against Firestore before pointing a custom domain at the Worker.
-5. Keep the test preview separate until the Firestore production smoke check succeeds.
 
 ## References
 
-[1] [Use the Cloud Firestore REST API](https://firebase.google.com/docs/firestore/use-rest-api)
+[1] [Deploy a static HTML website to Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)
 
-[2] [Cloud Firestore Security Rules: get started](https://firebase.google.com/docs/firestore/security/get-started)
+[2] [Get started with Firebase Functions](https://firebase.google.com/docs/functions/get-started)
 
-[3] [React + Vite on Cloudflare Workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
+[3] [Firebase Authentication for web](https://firebase.google.com/docs/auth/web/start)
+
+[4] [Cloud Firestore quickstart](https://firebase.google.com/docs/firestore/quickstart)

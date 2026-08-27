@@ -27,7 +27,24 @@
 ## Production Firestore and Cloudflare Target
 
 - [x] Isolate a Firestore REST adapter and Firestore collection contract for KDB production without Shopify.
-- [x] Add a Cloudflare Worker API target that preserves public catalogue, protected owner operations, and server-validated COD paths.
+- [x] Superseded the earlier Cloudflare Worker API target and removed it after selecting Cloudflare Pages with Firebase Functions for KDB production.
 - [x] Add Firestore deny-by-default browser rules, Worker secret templates, deployment configuration, production documentation, and unit coverage for the repository codec.
 - [x] Run direct Node syntax and regression tests for the Worker source and existing KDB domain suite.
-- [ ] Create the owner Firebase project, deploy Firestore rules, set Cloudflare Worker secrets, import owner-approved production records, and run a live Firestore/Cloudflare smoke test.
+- [ ] Create the owner Firebase project, deploy Firestore rules and Functions, import owner-approved production records, configure Cloudflare Pages, and run a live production smoke test.
+
+## Cloudflare Pages Instead of Worker
+
+- [x] Remove the Cloudflare Worker deployment path and its server-side Firestore service-account model from the production target.
+- [x] Configure Cloudflare Pages for the static KDB site and document the exact Pages build/output settings.
+- [x] Add a browser-safe Firebase client configuration contract and Firestore rules that permit only the minimum required public and authenticated-owner access.
+- [x] Preserve server-authoritative COD validation and owner-only data access through a Pages-compatible architecture; document any service that Pages alone cannot safely perform.
+- [x] Test the Pages contract and update the Firestore/Cloudflare deployment documentation before pushing the corrected architecture.
+
+## Cloudflare Pages with Firebase Functions for Secure COD
+
+- [x] Replace the former Worker deployment target with Cloudflare Pages and remove all Worker source/configuration from H.B.
+- [x] Add Firebase client configuration and Firestore access paths for public KDB catalogue content, with no Shopify dependency.
+- [x] Add Firebase Authentication and role-based Firestore rules for owner access without exposing a reusable owner access token in browser code.
+- [x] Add Firebase Cloud Functions for server-validated COD order creation and protected owner mutations.
+- [x] Connect the static KDB client to the Firebase/Functions API contract while preserving 58 wilayas, domicile-only baladiya, and COD-only flow.
+- [x] Add production build/tests and an owner-facing Cloudflare Pages + Firebase setup guide with no real secrets or fabricated records.

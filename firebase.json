@@ -1,4 +1,10 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "kdb"
+    }
+  ],
   "firestore": {
     "rules": "firestore.rules"
   }

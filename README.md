@@ -29,21 +29,21 @@ The owner console at `/#admin` is an original KDB workspace rather than an exter
 | `server/index.mjs` | HTTP composition root with filtered public routes and token-protected owner operations. |
 | `server/algeria-data.mjs` | Read-only-derived copy of the 58-wilaya and dependent baladiya source data. |
 
-> `server/store.mjs` is intentionally limited to local development and isolated Node tests. The production target is the Cloudflare Worker plus Firestore adapter in `worker/`; it contains no Shopify dependency and does not enable online payment.
+> `server/store.mjs` is intentionally limited to local development and isolated Node tests. The production target is **Cloudflare Pages + Firebase**: Pages serves `public/`, while Firebase Functions validate COD and protect owner operations. It contains no Shopify dependency and does not enable online payment.
 
-## Production: Firestore + Cloudflare
+## Production: Cloudflare Pages + Firebase
 
-The real KDB deployment target is **Cloudflare Workers + Cloud Firestore**, not the temporary testing stack. The Worker serves the static storefront and KDB API, and the server-side Worker alone accesses Firestore with a service-account secret. Browser access to Firestore is denied by `firestore.rules`.
+The real KDB deployment target is **Cloudflare Pages + Cloud Firestore + Firebase Functions**, not the temporary testing stack. Pages serves the static storefront. Firebase callable Functions validate COD and owner mutations, while browser access to Firestore is denied by `firestore.rules`.
 
-Read [`docs/PRODUCTION_FIRESTORE_CLOUDFLARE.md`](./docs/PRODUCTION_FIRESTORE_CLOUDFLARE.md) before deployment. It specifies the Firestore collections, rules, required Cloudflare secrets, launch gate, and the fact that COD remains the only payment method.
+Read [`docs/PRODUCTION_FIRESTORE_CLOUDFLARE.md`](./docs/PRODUCTION_FIRESTORE_CLOUDFLARE.md) before deployment. It specifies the Firestore collections, Firebase owner setup, Pages configuration, launch gate, and the fact that COD remains the only payment method.
 
 ```bash
-# Validate the Worker source without running a deployment.
-node --check worker/index.mjs
+# Validate the Functions source without running a deployment.
+pnpm check:functions
 node --test
 
-# After creating Firebase/Cloudflare projects and setting Worker secrets:
-pnpm deploy:cloudflare
+# After creating Firebase/Cloudflare projects and deploying Firebase:
+pnpm deploy:pages
 ```
 
 ## Run locally

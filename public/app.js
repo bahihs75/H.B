@@ -1,5 +1,7 @@
 import { WILAYAS, communesOf } from "/js/algeria-data.js";
 
+import { loadPublicStore, ownerRequest, signInOwner, signOutOwner, submitCodOrder } from "./firebase-client.js";
+
 const app = document.querySelector("#app");
 const money = new Intl.NumberFormat("fr-DZ", { maximumFractionDigits: 0 });
 const icon = (name) => ({
@@ -45,10 +47,14 @@ const parseJson = (value, title) => {
   try { return JSON.parse(value || "[]"); } catch { throw new Error(`${title} must be valid JSON.`); }
 };
 const api = async (url, options = {}) => {
-  const response = await fetch(url, { headers: { "content-type": "application/json", ...(options.headers || {}) }, ...options });
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.error || "Request could not be completed.");
-  return data;
+  const method = options.method || "GET";
+  const payload = options.body ? JSON.parse(options.body) : {};
+  if (url === "/api/store" && method === "GET") return loadPublicStore();
+  if (url === "/api/orders" && method === "POST") return submitCodOrder(payload);
+  if (url === "/api/admin/store" && method === "GET") return (await ownerRequest(url, method, payload)).store;
+  if (url === "/api/admin/session" && method === "POST") return { user: await signInOwner(payload.email, payload.password) };
+  if (url.startsWith("/api/admin/")) return ownerRequest(url, method, payload);
+  throw new Error("KDB API route is not configured.");
 };
 
 const savedCart = JSON.parse(localStorage.getItem("kdb-hb-cart") || "[]");
@@ -131,7 +137,7 @@ function bagDrawer() {
 function storefront() { return `${publicHeader()}<main id="home" dir="${state.lang === "ar" ? "rtl" : "ltr"}">${state.store.content.sectionVisibility.hero !== false ? hero() : ""}${state.store.content.sectionVisibility.catalogue !== false ? shop() : ""}${state.store.content.sectionVisibility.collections !== false ? collections() : ""}${projects()}${state.store.content.sectionVisibility.about !== false ? about() : ""}${state.store.content.sectionVisibility.contact !== false ? contact() : ""}</main><footer class="site-footer"><span>KDB / OBJECTS FOR THE EVERYDAY</span><span>COD / ALGERIA</span></footer>${state.bagOpen ? bagDrawer() : ""}${state.productId ? productDialog() : ""}`; }
 
 function adminGate() {
-  return `${publicHeader()}<main class="admin-gate"><div><p class="eyebrow">KDB / OWNER CONTROL</p><h1>Control the<br/><em>whole room.</em></h1><p>The KDB owner room brings COD operations, catalogue governance, content, media, delivery, insights and data tools into one protected console.</p><form id="admin-login"><label>Owner access code<input type="password" name="token" required autocomplete="current-password"/></label><p class="form-error" id="admin-error"></p><button class="button button--dark" type="submit">Enter control room ${icon("arrow")}</button></form></div><img src="${safe(state.store.products[0]?.image || "")}" alt="KDB textile detail"/></main>`;
+  return `${publicHeader()}<main class="admin-gate"><div><p class="eyebrow">KDB / OWNER CONTROL</p><h1>Control the<br/><em>whole room.</em></h1><p>The KDB owner room brings COD operations, catalogue governance, content, media, delivery, insights and data tools into one protected console.</p><form id="admin-login"><label>Owner email<input type="email" name="email" required autocomplete="username"/></label><label>Owner password<input type="password" name="password" required autocomplete="current-password"/></label><p class="form-error" id="admin-error"></p><button class="button button--dark" type="submit">Enter control room ${icon("arrow")}</button></form></div><img src="${safe(state.store.products[0]?.image || "")}" alt="KDB textile detail"/></main>`;
 }
 
 function metric(labelText, value, detail, iconName = "chart") { return `<article class="metric">${icon(iconName)}<small>${safe(labelText)}</small><strong>${safe(value)}</strong><span>${safe(detail)}</span></article>`; }
@@ -231,9 +237,9 @@ function updateBaladiya() {
   wrapper.classList.toggle("is-hidden", !domicile); select.required = domicile;
   select.innerHTML = `<option value="">${code ? "Select baladiya" : "Select wilaya first"}</option>${communesOf(code).map((commune) => `<option value="${safe(commune)}">${safe(commune)}</option>`).join("")}`;
 }
-function adminHeaders() { return { "x-kdb-admin-token": state.admin.token }; }
-async function refreshAdmin(notice = "") { state.admin = { token: state.admin.token, ...(await api("/api/admin/store", { headers: adminHeaders() })) }; state.notice = notice; render(); }
-async function mutate(url, method, payload, notice) { await api(url, { method, headers: adminHeaders(), body: payload === undefined ? undefined : JSON.stringify(payload) }); await refreshAdmin(notice); }
+function adminHeaders() { return {}; }
+async function refreshAdmin(notice = "") { state.admin = await api("/api/admin/store"); state.notice = notice; render(); }
+async function mutate(url, method, payload, notice) { await api(url, { method, body: payload === undefined ? undefined : JSON.stringify(payload) }); await refreshAdmin(notice); }
 function value(form, name) { return new FormData(form).get(name); }
 function checked(form, name) { return new FormData(form).get(name) === "on"; }
 
@@ -254,7 +260,7 @@ function bind() {
       if (action === "hero-prev") { state.heroIndex = (state.heroIndex - 1 + state.store.content.heroSlides.length) % state.store.content.heroSlides.length; render(); }
       if (action === "hero-dot") { state.heroIndex = Number(element.dataset.index); render(); }
       if (action === "admin-nav") { state.adminSection = element.dataset.section; state.notice = ""; state.editor = null; render(); }
-      if (action === "admin-logout") { state.admin = null; state.notice = ""; state.editor = null; render(); }
+      if (action === "admin-logout") { await signOutOwner(); state.admin = null; state.notice = ""; state.editor = null; render(); }
       if (action === "new-product") { state.editor = { kind: "product", record: { id: "", name: "", categoryId: state.admin.categories[0]?.id || "textile", sku: "", price: 0, stock: 0, status: "draft", image: state.admin.media[0]?.url || "", gallery: [], variants: [], colors: [], attributes: [], collectionIds: [], tags: [], offer: {} } }; render(); }
       if (action === "edit-product") { state.editor = { kind: "product", record: state.admin.products.find((item) => item.id === element.dataset.product) }; render(); }
       if (action === "close-editor") { state.editor = null; render(); }
@@ -283,7 +289,7 @@ function bind() {
 
   const detail = document.querySelector("#product-detail-form"); if (detail) detail.addEventListener("submit", (event) => { event.preventDefault(); addProduct(state.productId, value(detail, "variantId")); });
   const orderForm = document.querySelector("#order-form"); if (orderForm) { orderForm.addEventListener("change", (event) => { if (["wilayaCode", "deliveryType"].includes(event.target.name)) updateBaladiya(); }); orderForm.addEventListener("submit", async (event) => { event.preventDefault(); const error = document.querySelector("#form-error"); try { const data = await api("/api/orders", { method: "POST", body: JSON.stringify({ fullName: value(orderForm, "fullName"), phone: value(orderForm, "phone"), wilayaCode: value(orderForm, "wilayaCode"), deliveryType: value(orderForm, "deliveryType"), baladiya: value(orderForm, "baladiya"), lines: state.cart, source: "storefront" }) }); state.cart = []; persistCart(); state.order = data.order; await loadPublic(); render(); } catch (reason) { error.textContent = reason.message; } }); updateBaladiya(); }
-  const login = document.querySelector("#admin-login"); if (login) login.addEventListener("submit", async (event) => { event.preventDefault(); const error = document.querySelector("#admin-error"); const token = value(login, "token"); try { await api("/api/admin/session", { method: "POST", body: JSON.stringify({ token }) }); state.admin = { token, ...(await api("/api/admin/store", { headers: { "x-kdb-admin-token": token } })) }; render(); } catch (reason) { error.textContent = reason.message; } });
+  const login = document.querySelector("#admin-login"); if (login) login.addEventListener("submit", async (event) => { event.preventDefault(); const error = document.querySelector("#admin-error"); try { await api("/api/admin/session", { method: "POST", body: JSON.stringify({ email: value(login, "email"), password: value(login, "password") }) }); state.admin = await api("/api/admin/store"); render(); } catch (reason) { error.textContent = reason.message; } });
   app.querySelectorAll("[data-order-form]").forEach((form) => form.addEventListener("submit", async (event) => { event.preventDefault(); try { await mutate(`/api/admin/orders/${encodeURIComponent(form.dataset.orderForm)}`, "PATCH", { status: value(form, "status"), notes: value(form, "notes") }, "COD order operation saved."); } catch (error) { state.notice = error.message; render(); } }));
   app.querySelectorAll("[data-delivery-form]").forEach((form) => form.addEventListener("submit", async (event) => { event.preventDefault(); try { await mutate(`/api/admin/delivery/${form.dataset.deliveryForm}`, "PATCH", { stopDeskFee: Number(value(form, "stopDeskFee")), domicileFee: Number(value(form, "domicileFee")), enabled: checked(form, "enabled"), free: checked(form, "free") }, `Wilaya ${form.dataset.deliveryForm} saved.`); } catch (error) { state.notice = error.message; render(); } }));
   const deliveryBulk = document.querySelector("#delivery-bulk"); if (deliveryBulk) deliveryBulk.addEventListener("submit", async (event) => { event.preventDefault(); try { await mutate("/api/admin/delivery/bulk", "PUT", { mode: value(deliveryBulk, "mode"), delta: Number(value(deliveryBulk, "delta")), enabledOnly: checked(deliveryBulk, "enabledOnly") }, "Delivery matrix updated."); } catch (error) { state.notice = error.message; render(); } });

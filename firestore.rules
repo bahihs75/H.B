@@ -1,8 +1,9 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // KDB exposes public reads and all owner writes through the Cloudflare
-    // Worker. The browser must not receive an unrestricted Firestore path.
+    // KDB uses callable Functions for public catalogue snapshots, COD orders,
+    // and owner operations. The browser must not receive direct database
+    // access; Firebase Admin in Functions bypasses these client rules.
     match /{document=**} {
       allow read, write: if false;
     }
